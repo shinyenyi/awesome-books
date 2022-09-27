@@ -25,3 +25,20 @@ function createBooksList(books) {
 }
 
 createBooksList(books);
+addBookButton.onclick = (() => {
+  if (inputAuthor.value && inputTitle.value) {
+    books.push({ title: inputTitle.value, author: inputAuthor.value });
+  }
+  booksList = '';
+  localStorage.setItem("books", JSON.stringify(books));
+  books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
+  createBooksList(books);
+  return true;
+});
+function removeBook(index) {
+  books.splice(index, 1);
+  booksList = '';
+  localStorage.setItem("books", JSON.stringify(books));
+  books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
+  createBooksList(books);
+}
