@@ -1,0 +1,9 @@
+.books-list {
+  list-style: none;
+}
+
+.add-book {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
