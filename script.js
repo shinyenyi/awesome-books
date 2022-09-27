@@ -1,7 +1,6 @@
 const booksListSection = document.querySelector('.books-list');
 const inputTitle = document.querySelector('.input-title');
 const inputAuthor = document.querySelector('.input-author');
-const removeBookButton = document.querySelector('.remove-book-button');
 const addBookButton = document.querySelector('.add-book-button');
 
 let books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
@@ -25,20 +24,24 @@ function createBooksList(books) {
 }
 
 createBooksList(books);
+
 addBookButton.onclick = (() => {
   if (inputAuthor.value && inputTitle.value) {
     books.push({ title: inputTitle.value, author: inputAuthor.value });
   }
   booksList = '';
-  localStorage.setItem("books", JSON.stringify(books));
+  localStorage.setItem('books', JSON.stringify(books));
   books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
   createBooksList(books);
-  return true;
+  inputAuthor.value = '';
+  inputTitle.value = '';
 });
+
+// eslint-disable-next-line no-unused-vars
 function removeBook(index) {
   books.splice(index, 1);
   booksList = '';
-  localStorage.setItem("books", JSON.stringify(books));
+  localStorage.setItem('books', JSON.stringify(books));
   books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
   createBooksList(books);
 }
