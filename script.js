@@ -33,6 +33,28 @@ class Book {
     this.author = author;
     this.index = index;
   }
+  removeBook() {
+    this.index = bookIndex;
+    books.splice(this.index, 1);
+    booksList = '';
+    localStorage.setItem('books', JSON.stringify(books));
+    books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
+    createBooksList(books);
+  }
+  addBook() {
+    if (books.length) {
+      bookIndex = (books.length - 1);
+    }
+    this.author = inputAuthor.value;
+    this.title = inputTitle.value;
+    this.index = bookIndex;
+    booksList = '';
+    localStorage.setItem('books', JSON.stringify(books));
+    books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
+    createBooksList(books);
+    inputAuthor.value = '';
+    inputTitle.value = '';
+  }
 }
 
 if (books.length) {
