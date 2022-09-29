@@ -4,9 +4,11 @@
   flex-direction: column;
   border: 2px solid black;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .title {
+  margin-top: 70px;
   padding: 20px;
 }
 
@@ -16,7 +18,7 @@
 }
 
 .book {
-  width: 300px;
+  width: 100%;
   display: flex;
   padding: 5px;
   justify-content: space-between;
@@ -52,11 +54,70 @@
   cursor: pointer;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  padding: 24px;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+}
+
+.menu-item {
+  border-left: 2px solid black;
+  padding-right: 5px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.display-none {
+  display: none;
+}
+
+.menu-item:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid black;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+footer {
+  padding: 24px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+}
+
+footer div {
+  border: 3px solid black;
+  padding: 10px;
+}
+
 .add-book {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-top: 20px;
+}
+
+.contact-section {
+  display: flex;
 }
 
 .line {
@@ -71,17 +132,36 @@
   box-sizing: border-box;
 }
 
+.display {
+  display: flex;
+}
+
+.no-books {
+  color: red;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
 body {
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 24px;
+  height: 100%;
+}
+
+.contact-section-list {
+  margin-top: 10px;
+  padding-left: 35px;
 }
 
 .books {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: 60px;
 }
 
 .input-title,

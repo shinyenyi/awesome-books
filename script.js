@@ -2,6 +2,63 @@ const booksListSection = document.querySelector('.books-list');
 const inputTitle = document.querySelector('.input-title');
 const inputAuthor = document.querySelector('.input-author');
 const addBookButton = document.querySelector('.add-book-button');
+const date = document.querySelector('.date');
+const bookList = document.querySelector('.list');
+const addNewBook = document.querySelector('.add-new');
+const contact = document.querySelector('.contact');
+const noBooks = document.getElementById('no-books');
+const pageTitle = document.querySelector('.title');
+const addBookSection = document.getElementById('add-book-section');
+const contactSection = document.getElementById('contact-section');
+const listBooksSection = document.getElementById('list-books-section');
+
+bookList.onclick = (() => {
+  listBooksSection.classList.remove('display-none');
+  listBooksSection.classList.add('books');
+  contactSection.classList.remove('contact-section');
+  contactSection.classList.add('display-none');
+  addBookSection.classList.remove('add-book');
+  addBookSection.classList.add('display-none');
+  pageTitle.innerText = 'All awesome books';
+});
+
+noBooks.onclick = (() => {
+  addNewBook.click();
+  return true;
+});
+
+addNewBook.onclick = (() => {
+  listBooksSection.classList.remove('books');
+  listBooksSection.classList.add('display-none');
+  contactSection.classList.remove('contact-section');
+  contactSection.classList.add('display-none');
+  addBookSection.classList.remove('display-none');
+  addBookSection.classList.add('add-book');
+  pageTitle.innerText = 'Add a new book';
+});
+
+contact.onclick = (() => {
+  listBooksSection.classList.remove('books');
+  listBooksSection.classList.add('display-none');
+  contactSection.classList.remove('display-none');
+  contactSection.classList.add('contact-section');
+  addBookSection.classList.remove('add-book');
+  addBookSection.classList.add('display-none');
+  pageTitle.innerText = 'Contact information';
+});
+
+// eslint-disable-next-line no-unused-vars
+function displayCounterTime() {
+  const x = new Date();
+  date.innerHTML = x;
+  // eslint-disable-next-line no-use-before-define
+  displayCounter();
+}
+function displayCounter() {
+  const refresh = 1000;
+  // eslint-disable-next-line no-implied-eval
+  setTimeout('displayCounterTime()', refresh);
+}
 
 let books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
 
@@ -65,6 +122,16 @@ if (books.length) {
   bookIndex = (books.length - 1);
 }
 
+function checkForBooks() {
+  if (books.length === 0) {
+    noBooks.classList.add('display');
+    noBooks.classList.remove('display-none');
+  } else {
+    noBooks.classList.add('display-none');
+    noBooks.classList.remove('display');
+  }
+}
+
 let newBook;
 function createNewBook() {
   if (inputAuthor.value && inputTitle.value) {
@@ -74,8 +141,12 @@ function createNewBook() {
 
 addBookButton.onclick = (() => {
   createNewBook();
-  books.push(newBook);
-  newBook.addBook();
+  if (newBook) {
+    books.push(newBook);
+    newBook.addBook();
+  }
+  window.location.reload();
+  checkForBooks();
 });
 
 // eslint-disable-next-line no-unused-vars
@@ -87,4 +158,7 @@ function removeBookButton(index) {
   newBook = new Book('', '', index);
   newBook.removeBook();
   window.location.reload();
+  checkForBooks();
 }
+
+checkForBooks();
