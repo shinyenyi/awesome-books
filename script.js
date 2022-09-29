@@ -12,10 +12,12 @@ function createBooksList(books) {
     books.forEach((book, index) => {
       booksList += `
         <li class="book">
-          <p class="book-title">${book.title}</p>
-          by
-          <p class="book-author">${book.author}</p>
-          <button class="remove-book-button" onclick="removeBookButton(${index},${book.title})">Remove</button>
+          <div class="title-and-author">
+            <p class="book-title">"${book.title}"</p>
+            by
+            <p class="book-author">${book.author}</p>
+          </div>
+          <button class="remove-book-button" onclick="removeBookButton(${index})">Remove</button>
         </li>
       `;
     });
@@ -33,6 +35,7 @@ class Book {
     this.author = author;
     this.index = index;
   }
+
   removeBook() {
     this.index = bookIndex;
     books.splice(this.index, 1);
@@ -41,6 +44,7 @@ class Book {
     books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
     createBooksList(books);
   }
+
   addBook() {
     if (books.length) {
       bookIndex = (books.length - 1);
@@ -75,38 +79,12 @@ addBookButton.onclick = (() => {
 });
 
 // eslint-disable-next-line no-unused-vars
-function removeBookButton(index, title) {
+function removeBookButton(index) {
   if (index) {
     bookIndex = index;
-  } else {
-    bookIndex = books.findIndex((book) => book.title === title);
   }
+
+  newBook = new Book('', '', index);
   newBook.removeBook();
+  window.location.reload();
 }
-
-// addBookButton.onclick = (() => {
-//   if (inputAuthor.value && inputTitle.value) {
-//     let bookIndex = 0;
-//     if (books.length) {
-//       bookIndex = books.length;
-//     }
-//     const newBook = new Book(inputTitle.value, inputAuthor.value, bookIndex);
-//     books.push({ title: inputTitle.value, author: inputAuthor.value });
-//     books.push(newBook);
-//   }
-//   booksList = '';
-//   localStorage.setItem('books', JSON.stringify(books));
-//   books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
-//   createBooksList(books);
-//   inputAuthor.value = '';
-//   inputTitle.value = '';
-// });
-
-// eslint-disable-next-line no-unused-vars
-// function removeBook(index) {
-//   books.splice(index, 1);
-//   booksList = '';
-//   localStorage.setItem('books', JSON.stringify(books));
-//   books = Array.from(JSON.parse(localStorage.getItem('books') || '[]'));
-//   createBooksList(books);
-// }
