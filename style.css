@@ -8,6 +8,7 @@
 }
 
 .title {
+  margin-top: 70px;
   padding: 20px;
 }
 
@@ -54,13 +55,14 @@
 }
 
 header {
-  width: 100%;
-}
-
-header {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  padding: 24px;
 }
 
 .menu {
@@ -72,6 +74,16 @@ header {
   border-left: 2px solid black;
   padding-right: 5px;
   padding-left: 5px;
+  cursor: pointer;
+}
+
+.display-none {
+  display: none;
+}
+
+.menu-item:hover {
+  color: blue;
+  cursor: pointer;
 }
 
 .nav-bar {
@@ -85,19 +97,27 @@ header {
 }
 
 footer {
-  padding: 10px;
-  margin-top: 24px;
-  border: 3px solid black;
+  padding: 24px;
   width: 100%;
-  /* align-self: flex-end; */
-  justify-content: flex-end;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+}
+
+footer div {
+  border: 3px solid black;
+  padding: 10px;
 }
 
 .add-book {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-top: 20px;
+}
+
+.contact-section {
+  display: flex;
 }
 
 .line {
@@ -112,6 +132,16 @@ footer {
   box-sizing: border-box;
 }
 
+.display {
+  display: flex;
+}
+
+.no-books {
+  color: red;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
 body {
   background-color: #fff;
   display: flex;
@@ -122,10 +152,16 @@ body {
   height: 100%;
 }
 
+.contact-section-list {
+  margin-top: 10px;
+  padding-left: 35px;
+}
+
 .books {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 60px;
 }
 
 .input-title,
