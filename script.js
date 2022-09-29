@@ -74,8 +74,11 @@ function createNewBook() {
 
 addBookButton.onclick = (() => {
   createNewBook();
-  books.push(newBook);
-  newBook.addBook();
+  if (newBook) {
+    books.push(newBook);
+    newBook.addBook();
+  }
+  window.location.reload();
 });
 
 // eslint-disable-next-line no-unused-vars

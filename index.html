@@ -9,8 +9,18 @@
   <title>Document</title>
 </head>
 
-<body>
-  <header></header>
+<body onload="displayCounterTime()">
+  <header>
+    <nav class="nav-bar">
+      <div class="logo">Awesome Books</div>
+      <ul class="menu">
+        <li class="menu-item">List</li>
+        <li class="menu-item">Add new</li>
+        <li class="menu-item">Contact</li>
+      </ul>
+    </nav>
+    <div class="date">date and time</div>
+  </header>
   <h1 class="title">All awesome books</h1>
   <section class="books">
     <ul class="books-list">
@@ -23,6 +33,9 @@
     <input type="text" class="input-author" placeholder="author">
     <button class="add-book-button">Add</button>
   </section>
+  <footer>
+    copyright
+  </footer>
   <script src="script.js"></script>
 </body>
 
